@@ -16,12 +16,6 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-@api_view(['GET'])
-def getOrders(request):
-    orders = Order.objects.all()
-    serializers = OrderSerializer(orders, many = True)
-    return Response(serializers.data)
-
 @api_view(['POST']) 
 @permission_classes([IsAuthenticated])
 def addOrderItems(request): 
@@ -118,3 +112,23 @@ def registerUser(request):
     except:
         message = {'detail': 'Tên người dùng đã tồn tại!'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getUserProfile(request):
+    user = request.user
+    serializer = UserSerializer(user, many = False)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getOrder(request):
+    user = request.user
+    try:
+        order = Order.objects.get(user = user)
+        serializer = OrderSerializer(order, many = True)
+        return Response(serializer.data)
+    except:
+        return Response({'detail': 'Không có sản phẩm'})
