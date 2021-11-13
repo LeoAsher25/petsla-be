@@ -1,0 +1,1 @@
+web: gunicorn petsla.wsgi --log-file -
