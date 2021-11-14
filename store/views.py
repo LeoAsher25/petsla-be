@@ -126,9 +126,9 @@ def getUserProfile(request):
 @permission_classes([IsAuthenticated])
 def getOrder(request):
     user = request.user
-    try:
-        order = Order.objects.get(user = user)
-        serializer = OrderSerializer(order, many = True)
+    orders = user.order_set.all()
+    if len(orders) == 0:
+        return Response({'detail': 'Không có order nào'})
+    else:
+        serializer = OrderSerializer(orders, many = True)
         return Response(serializer.data)
-    except:
-        return Response({'detail': 'Không có sản phẩm'})
