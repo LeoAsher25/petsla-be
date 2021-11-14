@@ -21,18 +21,16 @@ class Product(models.Model):
     price = models.IntegerField()
     images = models.ImageField(upload_to='photos/products')
     stock = models.IntegerField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE) #xoa danh muc thi san pham cung xoa
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.product_name
 
-class Order(models.Model):  
-    # full_name = models.CharField(max_length=200, null=True) #change null
+class Order(models.Model):   
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    number_phone = models.CharField(max_length=10, null=True) #change null
-    # email = models.EmailField(max_length=25, null=True, blank=True) #change null
+    number_phone = models.CharField(max_length=10, null=True) #change null 
     address = models.CharField(max_length=100, null=True)
     total_price = models.DecimalField(max_digits=9, decimal_places=0, null=True, blank=True)
     is_paid = models.BooleanField(default=False)
@@ -42,7 +40,7 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.user)
 
 
 class OrderItem(models.Model):
