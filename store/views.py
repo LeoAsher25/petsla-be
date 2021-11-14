@@ -110,7 +110,7 @@ def registerUser(request):
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
     except:
-        message = {'detail': 'Tên người dùng đã tồn tại!'}
+        message = {'detail': 'Tên đăng nhập đã được sử dụng!'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -119,16 +119,12 @@ def registerUser(request):
 @permission_classes([IsAuthenticated])
 def getUserProfile(request):
     user = request.user
-    serializer = UserSerializer(user, many = False)
-    return Response(serializer.data)
+    serializer = UserSerializer(user, many = False) 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getOrder(request):
     user = request.user
-    orders = user.order_set.all()
-    if len(orders) == 0:
-        return Response({'detail': 'Không có order nào'})
-    else:
-        serializer = OrderSerializer(orders, many = True)
-        return Response(serializer.data)
+    orders = user.order_set.all() 
+    serializer = OrderSerializer(orders, many = True)
+    return Response(serializer.data)
