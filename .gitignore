@@ -5,9 +5,8 @@
 /.pnp
 /env
 .pnp.js
-
-*.pyc 
-# db.sqlite3
+ 
+db.sqlite3
 
 # testing
 /coverage
