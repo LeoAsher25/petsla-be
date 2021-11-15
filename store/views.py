@@ -47,7 +47,7 @@ def addOrderItems(request):
                 name = product.product_name,
                 quantity = i['quantity'],
                 price = i['price'],
-                image = "http://127.0.0.1:8000"+product.images.url,
+                image = product.images.url,
             )
 
             product.stock -= item.quantity
