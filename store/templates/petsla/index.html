@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      property="og:image"
+      content="../../media/photos/products/petsla.png"
+    />
+    <meta
+      property="og:title"
+      content="Đến với PetsLa để gần gũi với các pet hơn <3"
+    />
+    <meta
+      property="og:description"
+      content="PetsLa ra đời với sứ mệnh Pets hóa thế giới loài người bằng cách mang đến cho cộng đồng những content thú vị, đáng yêu về pets."
+    />
+    <link rel="stylesheet" href="./style.css" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetsLa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <style>
+    body {
+      background-color: #f0f0f0;
+    }
+    * {
+      font-family: "Nunito", sans-serif;
+      text-decoration: none;
+      color: #111;
+    }
+
+    .app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    img {
+      width: 300px;
+      margin: 50px auto 00px;
+    }
+    .app-title {
+      font-size: 32px;
+      text-align: center;
+    }
+
+    a {
+      font-size: 20px;
+    }
+
+    a:hover {
+      color: #e99746;
+    }
+
+    .link-wrap {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .link-item {
+      position: relative;
+      text-align: center;
+    }
+
+    .link-item + .link-item {
+      margin-left: 100px;
+    }
+
+    .link-item .title {
+      position: absolute;
+      word-wrap: normal;
+      left: 50%;
+      transform: translateX(-50%);
+
+      font-size: 16px;
+      word-spacing: normal;
+      word-break: keep-all;
+    }
+
+    .link-item:hover * {
+      color: #e99746;
+    }
+  </style>
+
+  <body>
+    <!-- <h3>HomePage</h3> -->
+    <div id="main">
+      <div class="app">
+        <img src="../../../media/photos/logos/logofull.png" alt="" />
+        <h3 class="app-title">
+          Chào mừng bạn đến với trang chủ quản lí của Petsla
+        </h3>
+        <ul class="list">
+          <li class="item">
+            <a href="/admin/">Trang quản lý Petsla (Chỉ dành cho admin).</a>
+          </li>
+          <li class="item">
+            <a href="/login/">Test chức năng Login.</a>
+          </li>
+          <li class="/register">
+            <a href="/admin/">Test chức năng Đăng kí.</a>
+          </li>
+          <li class="item">
+            <a href="/profile/">Test chức năng get user profile.</a>
+          </li>
+          <li class="item">
+            <a href="/categories/">Test chức năng get all categories.</a>
+          </li>
+          <li class="item">
+            <a href="/category/:id">Test chức năng get categories by id.</a>
+          </li>
+          <li class="item">
+            <a href="/products/">Test chức năng get all products.</a>
+          </li>
+          <li class="item">
+            <a href="/product/:id">Test chức năng get product by id.</a>
+          </li>
+          <li class="item">
+            <a href="/add-order/">Test chức năng add order.</a>
+          </li>
+          <li class="item">
+            <a href="/get-order">Test chức năng get order by current user.</a>
+          </li>
+        </ul>
+
+        <div class="link-wrap">
+          <div class="link-item">
+            <a href="https://petsla.herokuapp.com/">
+              <i class="fas fa-store"></i>
+              <div class="title">PetsLa Shop</div>
+            </a>
+          </div>
+
+          <div class="link-item">
+            <a href="https://www.facebook.com/petsla.vn">
+              <i class="fab fa-facebook-f"></i>
+              <div class="title">Facebook</div>
+            </a>
+          </div>
+          <div class="link-item">
+            <a href="https://petsla.herokuapp.com/">
+              <i class="fab fa-instagram"></i>
+              <div class="title">Instagram</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

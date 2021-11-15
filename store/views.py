@@ -16,6 +16,11 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+
+def homePage(request):
+    return render(request, "petsla/index.html")
+
+
 @api_view(['POST']) 
 @permission_classes([IsAuthenticated])
 def addOrderItems(request): 
