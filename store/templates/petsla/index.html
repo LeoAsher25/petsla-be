@@ -93,8 +93,9 @@
       transform: translateX(-50%);
 
       font-size: 16px;
-      word-spacing: normal;
-      word-break: keep-all;
+      transition: 0.3s;
+
+      white-space: nowrap;
     }
 
     .link-item:hover * {
@@ -118,7 +119,7 @@
             <a href="/login/">Test chức năng Login.</a>
           </li>
           <li class="/register">
-            <a href="/admin/">Test chức năng Đăng kí.</a>
+            <a href="/register/">Test chức năng Đăng kí.</a>
           </li>
           <li class="item">
             <a href="/profile/">Test chức năng get user profile.</a>
@@ -127,13 +128,7 @@
             <a href="/categories/">Test chức năng get all categories.</a>
           </li>
           <li class="item">
-            <a href="/category/:id">Test chức năng get categories by id.</a>
-          </li>
-          <li class="item">
             <a href="/products/">Test chức năng get all products.</a>
-          </li>
-          <li class="item">
-            <a href="/product/:id">Test chức năng get product by id.</a>
           </li>
           <li class="item">
             <a href="/add-order/">Test chức năng add order.</a>
@@ -145,20 +140,20 @@
 
         <div class="link-wrap">
           <div class="link-item">
-            <a href="https://petsla.herokuapp.com/">
+            <a target="_blank" href="https://petsla.herokuapp.com/">
               <i class="fas fa-store"></i>
               <div class="title">PetsLa Shop</div>
             </a>
           </div>
 
           <div class="link-item">
-            <a href="https://www.facebook.com/petsla.vn">
+            <a target="_blank" href="https://www.facebook.com/petsla.vn">
               <i class="fab fa-facebook-f"></i>
               <div class="title">Facebook</div>
             </a>
           </div>
           <div class="link-item">
-            <a href="https://petsla.herokuapp.com/">
+            <a target="_blank" href="https://www.instagram.com/petsla.vn">
               <i class="fab fa-instagram"></i>
               <div class="title">Instagram</div>
             </a>
