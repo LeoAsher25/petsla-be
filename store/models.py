@@ -17,10 +17,11 @@ class Category(models.Model):
 
 class Product(models.Model): 
     product_name = models.CharField(max_length=200, unique=True)
-    description = models.TextField(max_length=500, blank=True)
+    description = models.TextField(max_length=1500, blank=True)
     price = models.IntegerField()
     images = models.ImageField(upload_to='photos/products')
     stock = models.IntegerField()
+    note = models.CharField(max_length=500, null=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
