@@ -33,6 +33,7 @@ class Order(models.Model):
     number_phone = models.CharField(max_length=10, null=True) #change null 
     address = models.CharField(max_length=100, null=True)
     total_price = models.DecimalField(max_digits=9, decimal_places=0, null=True, blank=True)
+    note = models.TextField(max_length=500, null=True)
     is_paid = models.BooleanField(default=False)
     paid_at = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     is_delivered = models.BooleanField(default=False)

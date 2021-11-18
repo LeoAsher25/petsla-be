@@ -36,6 +36,7 @@ def addOrderItems(request):
             number_phone = data['number_phone'],
             address = data['address'],
             total_price = data['total_price'], 
+            note = data['note'],
         )
 
         for i in orderItems:
@@ -109,7 +110,6 @@ def registerUser(request):
             first_name = data['first_name'],
             last_name = data['last_name'],
             username = data['username'],
-            
             email = data['email'],
             password = make_password(data['password'])
         )

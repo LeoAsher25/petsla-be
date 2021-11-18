@@ -18,7 +18,7 @@ class OrderItemAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user','number_phone', 'total_price', 'created_at', 'is_delivered', 'is_paid')   
+    list_display = ('id', 'user','number_phone', 'total_price', 'note', 'created_at', 'is_delivered', 'is_paid')   
     search_fields = ('user', 'number_phone',)
     list_filter = ('created_at', 'is_paid', 'is_delivered',)
     list_per_page = 20
