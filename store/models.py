@@ -20,8 +20,7 @@ class Product(models.Model):
     description = models.TextField(max_length=1500, blank=True)
     price = models.IntegerField()
     images = models.ImageField(upload_to='photos/products')
-    stock = models.IntegerField()
-    note = models.CharField(max_length=1000, null=True)
+    stock = models.IntegerField() 
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
@@ -34,7 +33,7 @@ class Order(models.Model):
     number_phone = models.CharField(max_length=10, null=True) #change null 
     address = models.CharField(max_length=100, null=True)
     total_price = models.DecimalField(max_digits=9, decimal_places=0, null=True, blank=True)
-    note = models.TextField(max_length=500, null=True)
+    note = models.TextField(max_length=1000, null=True)
     is_paid = models.BooleanField(default=False)
     paid_at = models.DateTimeField(auto_now_add=False, null=True, blank=True)
     is_delivered = models.BooleanField(default=False)
