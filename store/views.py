@@ -27,7 +27,6 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
 def send_email(request, template_Url, subject_text, dataContent): 
-    dataContent["name"] = request.user.first_name
     # send email
     template = render_to_string(template_Url, dataContent)
 
@@ -80,7 +79,7 @@ def addOrderItems(request):
 
         template_Url =  'petsla/order.html'
         subject_text = 'Thanks for buying gift from PetsLa!'
-        dataContent = {"cart": orderItems, "totalPrice": order.total_price}
+        dataContent = {"user": user, "cart": orderItems, "totalPrice": order.total_price}
 
         send_email(request, template_Url, subject_text, dataContent)
 
@@ -145,10 +144,10 @@ def registerUser(request):
         )
         serializer = UserSerializerWithToken(user, many=False)
 
-        subject_text = 'Thanks for registering at PetsLa!'
-        template_Url = 'petsla/register.html'
-        dataContent = {}
-        send_email(request, template_Url, subject_text, dataContent)
+        # subject_text = 'Thanks for registering at PetsLa!'
+        # template_Url = 'petsla/register.html'
+        # dataContent = {"user": user}
+        # send_email(request, template_Url, subject_text, dataContent)
 
         return Response(serializer.data)
     except:
