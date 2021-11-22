@@ -1,0 +1,139 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        margin: 0;
+        padding: 0;
+      }
+
+      .cart-item {
+        display: flex;
+        align-items: center;
+      }
+
+      .infor-cart .cart-item__img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .cart-item__img img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .cart-item__content {
+        flex: 1;
+        padding: 0 20px;
+      }
+
+      .cart-item__content h3 {
+        display: block;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+
+        text-align: left;
+        font-weight: 600;
+      }
+
+      .cart-item__desc {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 400;
+      }
+
+      .infor-cart .cart-item__quantity {
+        display: flex;
+        align-items: center;
+      }
+
+      .infor-cart .cart-item__quantity span {
+        padding: 0 6px;
+        display: inline-block;
+
+        height: 100%;
+      }
+
+      .total-price-of-product {
+        text-align: left;
+      }
+
+      .total-price-of-product .title {
+        font-size: 16px;
+      }
+
+      .infor-cart .total-price {
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        position: relative;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+      }
+
+      .total-price .total-num {
+        color: red;
+        font-size: 18px;
+        font-weight: 600;
+      }
+    </style>
+
+    <title>Order Information!</title>
+  </head>
+  <body>
+    <div class="infor-cart">
+      <h3>Dear {{name}},</h3>
+      <p>
+        Thanks for visiting and buying some gifts from PetsLa. And follow is the
+        your order information:
+      </p>
+      <h3 class="model-title">Thông tin đơn hàng:</h3>
+      <div class="cart-list">
+        {% for product in cart %}
+        <li class="cart-item">
+          <div class="cart-item__img">
+            <img src=" {{product.image}} " alt="" />
+          </div>
+          <div class="cart-item__content">
+            <h3>{{product.name}}</h3>
+
+            <div class="cart-item__desc">
+              <div class="cart-item__quantity">
+                <span>Số lượng: </span>
+                <span>{{product.quantity}}</span>
+              </div>
+            </div>
+
+            <div class="total-price-of-product">
+              <span class="title">Giá: </span>
+              <span class="number">{{product.price}}đ</span>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </div>
+      <div class="total-price">
+        <span class="total-title">Tổng tiền: </span>
+        <span class="total-num">{{totalPrice}}đ </span>
+      </div>
+    </div>
+  </body>
+</html>

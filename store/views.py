@@ -20,6 +20,28 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 def homePage(request):
     return render(request, "petsla/index.html")
 
+# send email
+from django.core.mail import EmailMessage, EmailMultiAlternatives
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
+def send_email(request, template_Url, subject_text, dataContent): 
+    dataContent["name"] = request.user.first_name
+    # send email
+    template = render_to_string(template_Url, dataContent)
+
+    email = EmailMultiAlternatives(
+        subject_text,
+        strip_tags(template),
+        settings.EMAIL_HOST_USER,
+        [request.user.email],
+    )
+
+    email.attach_alternative(template, "text/html")
+    email.fail_silently = False
+    email.send()
+
 
 @api_view(['POST']) 
 @permission_classes([IsAuthenticated])
@@ -53,7 +75,15 @@ def addOrderItems(request):
 
             product.stock -= item.quantity
             product.save()
+            
         serializer = OrderSerializer(order, many = False)
+
+        template_Url =  'petsla/order.html'
+        subject_text = 'Thanks for buying gift from PetsLa!'
+        dataContent = {"cart": orderItems, "totalPrice": order.total_price}
+
+        send_email(request, template_Url, subject_text, dataContent)
+
         return Response(serializer.data)
 
 #
@@ -114,6 +144,12 @@ def registerUser(request):
             password = make_password(data['password'])
         )
         serializer = UserSerializerWithToken(user, many=False)
+
+        subject_text = 'Thanks for registering at PetsLa!'
+        template_Url = 'petsla/register.html'
+        dataContent = {}
+        send_email(request, template_Url, subject_text, dataContent)
+
         return Response(serializer.data)
     except:
         message = {'detail': 'Tên đăng nhập đã được sử dụng!'}
