@@ -75,7 +75,7 @@ def addOrderItems(request):
 
             product.stock -= item.quantity
             product.save()
-            
+
         serializer = OrderSerializer(order, many = False)
 
         template_Url =  'petsla/order.html'
