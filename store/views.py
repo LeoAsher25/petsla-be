@@ -77,11 +77,11 @@ def addOrderItems(request):
 
         serializer = OrderSerializer(order, many = False)
 
-        template_Url =  'petsla/order.html'
-        subject_text = 'Thanks for buying gift from PetsLa!'
-        dataContent = {"user": user, "cart": orderItems, "totalPrice": order.total_price}
+        # template_Url =  'petsla/order.html'
+        # subject_text = 'Thanks for buying gift from PetsLa!'
+        # dataContent = {"user": user, "cart": orderItems, "totalPrice": order.total_price}
 
-        send_email(request, template_Url, subject_text, dataContent)
+        # send_email(request, template_Url, subject_text, dataContent)
 
         return Response(serializer.data)
 
