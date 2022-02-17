@@ -77,12 +77,6 @@ def addOrderItems(request):
 
         serializer = OrderSerializer(order, many = False)
 
-        # template_Url =  'petsla/order.html'
-        # subject_text = 'Thanks for buying gift from PetsLa!'
-        # dataContent = {"user": user, "cart": orderItems, "totalPrice": order.total_price}
-
-        # send_email(request, template_Url, subject_text, dataContent)
-
         return Response(serializer.data)
 
 #
@@ -108,12 +102,19 @@ def getProducts(request):
     products = Product.objects.all()
     serializers = ProductSerializer(products, many = True)
     return Response(serializers.data)
+    
+@api_view(['GET'])
+def getOrder_Detail(request, id):
+    order = Order.objects.get(id=id)
+    serializers = OrderSerializer(order, many=False)
+    return Response(serializers.data)
 
 @api_view(['GET'])
 def getProduct_Detail(request, id):
     product = Product.objects.get(id=id)
     serializers = ProductSerializer(product, many=False)
     return Response(serializers.data)
+
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -144,11 +145,6 @@ def registerUser(request):
         )
         serializer = UserSerializerWithToken(user, many=False)
 
-        # subject_text = 'Thanks for registering at PetsLa!'
-        # template_Url = 'petsla/register.html'
-        # dataContent = {"user": user}
-        # send_email(request, template_Url, subject_text, dataContent)
-
         return Response(serializer.data)
     except:
         message = {'detail': 'Tên đăng nhập đã được sử dụng!'}
@@ -160,12 +156,15 @@ def registerUser(request):
 @permission_classes([IsAuthenticated])
 def getUserProfile(request):
     user = request.user
-    serializer = UserSerializer(user, many = False) 
+    _user = user.username
+    serializer = UserSerializer(user, many = False)
+    print( _user)
+    return Response(serializer.data)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getOrder(request):
     user = request.user
-    orders = user.order_set.all() 
+    orders = user.order_set.all()
     serializer = OrderSerializer(orders, many = True)
     return Response(serializer.data)

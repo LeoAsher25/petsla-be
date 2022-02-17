@@ -15,5 +15,6 @@ urlpatterns = [
     path('product/<str:id>', views.getProduct_Detail, name="product"),
 
     path('add-order/', views.addOrderItems, name='order-add'),
+    path('order/<str:id>', views.getOrder_Detail, name='order-add'),
     path('get-order/', views.getOrder, name = "get-order-id")
 ]

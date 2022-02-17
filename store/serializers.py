@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'name', 'isAdmin']
+        fields = ['id', 'username', 'email','name', 'first_name', 'last_name', 'isAdmin']
 
     def get_isAdmin(self, obj):
         return obj.is_staff
