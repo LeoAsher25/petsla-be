@@ -95,7 +95,8 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [ 
 "http://localhost:3000", 
-"https://petsla.herokuapp.com"
+"https://petsla.herokuapp.com",
+"http://leoasher.cf"
 ]
 
 ROOT_URLCONF = 'petsla.urls'
